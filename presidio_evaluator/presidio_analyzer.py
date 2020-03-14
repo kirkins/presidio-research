@@ -64,7 +64,7 @@ class PresidioAnalyzer(ModelEvaluator):
 
 if __name__ == "__main__":
     print("Reading dataset")
-    input_samples = read_synth_dataset("../data/synth_dataset.txt")
+    input_samples = read_synth_dataset("../data/synth_dataset.json")
 
     print("Preparing dataset by aligning entity names to Presidio's entity names")
 
