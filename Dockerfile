@@ -6,3 +6,4 @@ COPY . .
 RUN python ./setup.py install
 USER root
 RUN chmod -R 777 *
+RUN pip install flair
