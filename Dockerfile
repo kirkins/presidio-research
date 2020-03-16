@@ -18,6 +18,8 @@ RUN pip install -r requirements.txt
 
 USER root
 
+RUN chmod -R 777 *
+
 COPY . .
 
 EXPOSE 8888
