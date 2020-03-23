@@ -18,13 +18,13 @@ RUN pip install -r requirements.txt
 
 USER root
 
-RUN chmod -R 777 *
-
 COPY . .
 
 EXPOSE 8888
 
 RUN python ./setup.py install
+
+RUN chmod -R 777 *
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
