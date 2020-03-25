@@ -17,7 +17,7 @@ class FlairTrainer:
     def to_flair_row(text, pos, label):
         return "{} {} {}".format(text, pos, label)
 
-    def to_flair(self, df, outfile="flair_train.txt"):
+    def to_flair(self, df, outfile="../data/flair_train.txt"):
         sentence = 0
         flair = []
         for row in df.itertuples():
@@ -33,30 +33,30 @@ class FlairTrainer:
                     f.write("{}\n".format(item))
 
     def create_flair_corpus(self, train_samples_path, test_samples_path, val_samples_path):
-        if not path.exists("flair_train.txt"):
+        if not path.exists("../data/flair_train.txt"):
             train_samples = read_synth_dataset(train_samples_path)
             train_tagged = [sample for sample in train_samples if len(sample.spans) > 0]
             print("Kept {} train samples after removal of non-tagged samples".format(len(train_tagged)))
             train_data = InputSample.create_conll_dataset(train_tagged)
-            self.to_flair(train_data, outfile="flair_train.txt")
+            self.to_flair(train_data, outfile="../data/flair_train.txt")
 
-        if not path.exists("flair_test.txt"):
+        if not path.exists("../data/flair_test.txt"):
             test_samples = read_synth_dataset(test_samples_path)
             test_data = InputSample.create_conll_dataset(test_samples)
-            self.to_flair(test_data, outfile="flair_test.txt")
+            self.to_flair(test_data, outfile="../data/flair_test.txt")
 
-        if not path.exists("flair_val.txt"):
+        if not path.exists("../data/flair_val.txt"):
             val_samples = read_synth_dataset(val_samples_path)
             val_data = InputSample.create_conll_dataset(val_samples)
-            self.to_flair(val_data, outfile="flair_val.txt")
+            self.to_flair(val_data, outfile="../data/flair_val.txt")
 
     @staticmethod
     def read_corpus(data_folder) -> Corpus:
         columns = {0: 'text', 1: 'pos', 2: 'ner'}
         corpus: Corpus = ColumnCorpus(data_folder, columns,
-                                      train_file='flair_train.txt',
-                                      test_file='flair_val.txt',
-                                      dev_file='flair_test.txt')
+                                      train_file='../data/flair_train.txt',
+                                      test_file='../data/flair_val.txt',
+                                      dev_file='../data/flair_test.txt')
         return corpus
 
     @staticmethod
@@ -112,9 +112,9 @@ class FlairTrainer:
 
 
 if __name__ == "__main__":
-    train_samples = "../data/generated_train_November 12 2019.json"
-    test_samples = "../data/generated_test_November 12 2019.json"
-    val_samples = "../data/generated_validation_November 12 2019.json"
+    train_samples = "../data/train_February_28_2020.json"
+    test_samples = "../data/test_February_28_2020.json"
+    val_samples = "../data/validation_February_28_2020.json"
 
     trainer = FlairTrainer()
     trainer.create_flair_corpus(train_samples, test_samples, val_samples)
