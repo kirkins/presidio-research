@@ -74,7 +74,8 @@ class FlairTrainer:
         embedding_types: List[TokenEmbeddings] = [
             WordEmbeddings('glove'),
             FlairEmbeddings('news-forward'),
-            FlairEmbeddings('news-backward')
+            FlairEmbeddings('news-backward'),
+            BertEmbeddings()
         ]
 
         embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
