@@ -23,7 +23,7 @@ root.addHandler(handler)
 class SpacyRetrainer:
 
     def __init__(self, original_model_name=None, experiment_name=None, n_iter=100, dropout=0.5,
-                 aml_config='config.json', output_dir='../../model-outputs', train_pickle='../data/train.pickle',
+                 aml_config='config.json', output_dir='../model-outputs', train_pickle='../data/train.pickle',
                  test_pickle='../data/test.pickle'):
         self.experiment_name = experiment_name
         if aml_config:
