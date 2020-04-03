@@ -113,9 +113,9 @@ class FlairTrainer:
 
 
 if __name__ == "__main__":
-    train_samples = "../data/train_February_28_2020.json"
-    test_samples = "../data/test_February_28_2020.json"
-    val_samples = "../data/validation_February_28_2020.json"
+    train_samples = "../data/train_April_03_2020.json"
+    test_samples = "../data/test_April_03_2020.json"
+    val_samples = "../data/validation_April_03_2020.json"
 
     trainer = FlairTrainer()
     trainer.create_flair_corpus(train_samples, test_samples, val_samples)
