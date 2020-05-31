@@ -9,6 +9,7 @@ from flair.trainers import ModelTrainer
 from presidio_evaluator import InputSample
 from presidio_evaluator.data_generator import read_synth_dataset
 from os import path
+from os import replace
 
 
 class FlairTrainer:
@@ -122,3 +123,4 @@ if __name__ == "__main__":
 
     corpus = trainer.read_corpus("")
     trainer.train(corpus)
+    replace("resources/taggers/presidio-ner/best-model.pt", "resources/taggers/presidio-ner/flair-model-2.pt")
